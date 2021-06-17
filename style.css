@@ -88,3 +88,16 @@ lottie-player {
         display: flex;
     }    
 }
+
+body::-webkit-scrollbar {
+    width: 12px;               
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #00BBF9;        
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #9B5DE5;   
+    border-radius: 25px;   
+  }
