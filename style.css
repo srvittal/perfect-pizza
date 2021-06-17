@@ -30,14 +30,26 @@ h3 {
     flex: 1;
 }
 
+.small_pizza:hover {
+    box-shadow: 10px 10px #F15BB5;
+}
+
 .medium_pizza {
     background-color:#F15BB5;
     flex: 1;
 }
 
+.medium_pizza:hover {
+    box-shadow: 10px 10px #00BBF9;
+}
+
 .large_pizza {
     background-color:#00BBF9;
     flex: 1;
+}
+
+.large_pizza:hover {
+    box-shadow: 10px 10px #9B5DE5;
 }
 
 .contact_us {
