@@ -25,6 +25,62 @@ h3 {
     position: relative;
 }
 
+.cart {
+    background-color:#00F5D4;
+    flex: 1;
+    padding-top: 0.1em;
+}
+
+.cartTable {
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.item {
+    text-align: center;
+}
+
+.checkOut, .payBtn {
+    display: block;
+    margin: auto;
+    border-radius: 1em;
+    border: none;
+    padding: 10px 15px;
+    background-color: darkgray;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pBtn, .mBtn {
+    display: block;
+    margin: auto;
+    border-radius: 2em;
+    /* border: none; */
+    padding: 5px 10px;
+    background-color: darkgray;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pAmt {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.payAmt {
+    border: none;
+    margin-left: 3px;
+    padding: 5px;
+    background-color: darkgray;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
 .small_pizza {
     background-color:#9B5DE5;
     flex: 1;
@@ -82,12 +138,6 @@ h3 {
     float:right;
 }
 
-lottie-player {
-    margin: 0 auto;
-    margin-top: 1.5em;
-    max-width: 100%;
-}
-
 .footer {
     position: relative;
     bottom: 0;
@@ -113,3 +163,7 @@ body::-webkit-scrollbar {
     background-color: #9B5DE5;   
     border-radius: 25px;   
   }
+
+.hidden {
+    display: none;
+}
