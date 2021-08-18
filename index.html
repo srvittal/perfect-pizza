@@ -27,11 +27,11 @@
                 <td class="item">
                     <h3 class="item">Small Pizza</h3>
                 </td>
-                <td><button class="pBtn small" id="test" on type="button" name="add">+</button></td>
+                <td><button class="pBtn small" data-size="smallAdd" on type="button">+</button></td>
                 <td>
                     <h3 class="smallPizzaQty item">0</h3>
                 </td>
-                <td><button class="mBtn small" on type="button" name="reduce">-</button></td>
+                <td><button class="mBtn small" data-size="smallMin" on type="button">-</button></td>
                 <td>
                     <h3 class="item">R<span class="smallPizzaTotal">0.00</span>
                 </td>
@@ -41,11 +41,11 @@
                 <td class="item">
                     <h3 class="item">Medium Pizza</h3>
                 </td>
-                <td><button class="pBtn med" on type="button" name="add">+</button></td>
+                <td><button class="pBtn med" data-size="medAdd" on type="button">+</button></td>
                 <td>
                     <h3 class="medPizzaQty item">0</h3>
                 </td>
-                <td><button class="mBtn med" on type="button" name="reduce">-</button></td>
+                <td><button class="mBtn med" data-size="medMin" on type="button">-</button></td>
                 <td>
                     <h3 class="item">R<span class="medPizzaTotal">0.00</span>
                 </td>
@@ -55,11 +55,11 @@
                 <td>
                     <h3 class="item">Large Pizza</h3>
                 </td>
-                <td><button class="pBtn large" on type="button" name="add">+</button></td>
+                <td><button class="pBtn large" data-size="largeAdd" on type="button">+</button></td>
                 <td>
                     <h3 class="largePizzaQty item">0</h3>
                 </td>
-                <td><button class="mBtn large" on type="button" name="reduce">-</button></td>
+                <td><button class="mBtn large" data-size="largeMin" on type="button">-</button></td>
                 <td>
                     <h3 class="item">R<span class="largePizzaTotal">0.00</span>
                 </td>
@@ -122,7 +122,7 @@
                         </div>
                     </td>
                     <td>
-                        <button class="pBtn small buy" on type="button" name="add">Buy</button>
+                        <button class="pBtn small buy" data-size="smallAdd" on type="button">Buy</button>
                     </td>
                 </tr>
             </table>
@@ -151,7 +151,7 @@
                         </div>
                     </td>
                     <td>
-                        <button class="pBtn med buy" on type="button" name="add">Buy</button>
+                        <button class="pBtn med buy" data-size="medAdd" on type="button">Buy</button>
                     </td>
                 </tr>
             </table>
@@ -180,7 +180,7 @@
                         </div>
                     </td>
                     <td>
-                        <button class="pBtn large buy" on type="button" name="add">Buy</button>
+                        <button class="pBtn large buy" data-size="largeAdd" on type="button">Buy</button>
                     </td>
                 </tr>
             </table>
@@ -209,7 +209,8 @@
         Sudarshan R. Vittal | Pizza Pamphlet - Perfect Pizza | ProjectCodeX | 2021
     </div>
 
-    <script src="cart.js" charset="utf-8"></script>
+    <script src="factoryFunction.js" charset="utf-8"></script>
+    <script src="cartFF.js" charset="utf-8"></script>
 
 </body>
 

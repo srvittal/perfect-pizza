@@ -34,52 +34,23 @@ var height = screen.availHeight;
 
 containerBox.style.width = width + 'px';
 containerBox.style.height = height + 'px';
-containerBox.style.paddingTop = height*1/3 + 'px';
+containerBox.style.paddingTop = height * 1 / 3 + 'px';
 
-var smallQty = 0;
-var medQty = 0;
-var largeQty = 0;
-var totalCart = 0;
+const cartbill = cart();
 
 function BtnClick(event) {
-    if (event.target.dataset.size === "smallAdd") {
-        smallQty++;
-        smallPizzaQty.innerHTML = smallQty;
-    } else if (event.target.dataset.size === "medAdd") {
-        medQty++;
-        medPizzaQty.innerHTML = medQty;
-    } else if (event.target.dataset.size === "largeAdd") {
-        largeQty++;
-        largePizzaQty.innerHTML = largeQty;
-    }
+    cartbill.btnClickff(event.target.dataset.size);
 
-    if (event.target.dataset.size === "smallMin") {
-        smallQty--;
-        if (smallQty < 0) {
-            smallQty = 0;
-        }
-        smallPizzaQty.innerHTML = smallQty;
-    } else if (event.target.dataset.size === "medMin") {
-        medQty--;
-        if (medQty < 0) {
-            medQty = 0;
-        }
-        medPizzaQty.innerHTML = medQty;
-    } else if (event.target.dataset.size === "largeMin") {
-        largeQty--;
-        if (largeQty < 0) {
-            largeQty = 0;
-        }
-        largePizzaQty.innerHTML = largeQty;
-    }
+    smallPizzaQty.innerHTML = cartbill.qtyUpdate().smallQty;
+    medPizzaQty.innerHTML = cartbill.qtyUpdate().medQty;
+    largePizzaQty.innerHTML = cartbill.qtyUpdate().largeQty;
 
-    smallPizzaTotal.innerHTML = (smallQty * 39).toFixed(2);
-    medPizzaTotal.innerHTML = (medQty * 79).toFixed(2);
-    largePizzaTotal.innerHTML = (largeQty * 99).toFixed(2);
-    totalCart = smallQty * 39.00 + medQty * 79.00 + largeQty * 99.00;
-    cartTotal.innerHTML = totalCart.toFixed(2);
+    smallPizzaTotal.innerHTML = cartbill.priceUpdate().smallCost;
+    medPizzaTotal.innerHTML = cartbill.priceUpdate().medCost;
+    largePizzaTotal.innerHTML = cartbill.priceUpdate().largeCost;
+    cartTotal.innerHTML = cartbill.priceUpdate().totalCart;
 
-    if (totalCart > 0) {
+    if (cartbill.priceUpdate().totalCart > 0) {
         checkOut.classList.remove('hidden');
     } else {
         checkOut.classList.add('hidden');
@@ -95,23 +66,19 @@ function checkOutClick() {
 function payment() {
     containerBox.classList.remove('hidden');
     var paymentAmt = Number(payAmt.value);
-    if (paymentAmt == totalCart) {
+    if (paymentAmt == cartbill.priceUpdate().totalCart) {
         containerBox.style.backgroundColor = 'rgba(120, 255, 120, 0.95)';
         message.innerHTML = "Enjoy your Pizza!";
-        smallQty = 0;
-        medQty = 0;
-        largeQty = 0;
-        totalCart = 0;
+        cartbill.resetCart();
 
-        smallPizzaQty.innerHTML = smallQty;
-        medPizzaQty.innerHTML = medQty;
-        largePizzaQty.innerHTML = largeQty;
+        smallPizzaQty.innerHTML = cartbill.resetCart().smallQty;
+        medPizzaQty.innerHTML = cartbill.resetCart().medQty;
+        largePizzaQty.innerHTML = cartbill.resetCart().largeQty;
 
-        smallPizzaTotal.innerHTML = (smallQty * 39).toFixed(2);
-        medPizzaTotal.innerHTML = (medQty * 79).toFixed(2);
-        largePizzaTotal.innerHTML = (largeQty * 99).toFixed(2);
-        totalCart = smallQty * 39.00 + medQty * 79.00 + largeQty * 99.00;
-        cartTotal.innerHTML = totalCart.toFixed(2);
+        smallPizzaTotal.innerHTML = cartbill.resetCart().smallCost;
+        medPizzaTotal.innerHTML = cartbill.resetCart().medCost;
+        largePizzaTotal.innerHTML = cartbill.resetCart().largeCost;
+        cartTotal.innerHTML = cartbill.resetCart().totalCart;
 
         setTimeout(function () {
             containerBox.classList.add('hidden');
@@ -120,24 +87,19 @@ function payment() {
             payAmt.value = "";
         }, 4500);
 
-    } else if (paymentAmt > totalCart) {
-        var change = paymentAmt - totalCart;
+    } else if (paymentAmt > cartbill.priceUpdate().totalCart) {
         containerBox.style.backgroundColor = 'rgba(120, 255, 120, 0.95)';
-        message.innerHTML = "Enjoy your Pizza, here is your change R" + change.toFixed(2);
-        smallQty = 0;
-        medQty = 0;
-        largeQty = 0;
-        totalCart = 0;
+        message.innerHTML = "Enjoy your Pizza, here is your change R" + cartbill.change(paymentAmt);
+        cartbill.resetCart();
 
-        smallPizzaQty.innerHTML = smallQty;
-        medPizzaQty.innerHTML = medQty;
-        largePizzaQty.innerHTML = largeQty;
+        smallPizzaQty.innerHTML = cartbill.resetCart().smallQty;
+        medPizzaQty.innerHTML = cartbill.resetCart().medQty;
+        largePizzaQty.innerHTML = cartbill.resetCart().largeQty;
 
-        smallPizzaTotal.innerHTML = (smallQty * 39).toFixed(2);
-        medPizzaTotal.innerHTML = (medQty * 79).toFixed(2);
-        largePizzaTotal.innerHTML = (largeQty * 99).toFixed(2);
-        totalCart = smallQty * 39.00 + medQty * 79.00 + largeQty * 99.00;
-        cartTotal.innerHTML = totalCart.toFixed(2);
+        smallPizzaTotal.innerHTML = cartbill.resetCart().smallCost;
+        medPizzaTotal.innerHTML = cartbill.resetCart().medCost;
+        largePizzaTotal.innerHTML = cartbill.resetCart().largeCost;
+        cartTotal.innerHTML = cartbill.resetCart().totalCart;
 
         setTimeout(function () {
             containerBox.classList.add('hidden');
@@ -176,4 +138,4 @@ checkOut.addEventListener('click', checkOutClick);
 
 payBtn.addEventListener('click', payment);
 
-closeBtn.addEventListener('click',close);
+closeBtn.addEventListener('click', close);
