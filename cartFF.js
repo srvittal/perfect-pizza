@@ -121,6 +121,15 @@ function close() {
     containerBox.classList.add('hidden');
 }
 
+function resize() { 
+width = screen.availWidth;
+height = screen.availHeight;
+
+containerBox.style.width = width + 'px';
+containerBox.style.height = height + 'px';
+containerBox.style.paddingTop = height * 1 / 3 + 'px';
+}
+
 
 smallPBtn.addEventListener('click', BtnClick);
 smallMBtn.addEventListener('click', BtnClick);
@@ -139,3 +148,5 @@ checkOut.addEventListener('click', checkOutClick);
 payBtn.addEventListener('click', payment);
 
 closeBtn.addEventListener('click', close);
+
+window.addEventListener('resize', resize);
